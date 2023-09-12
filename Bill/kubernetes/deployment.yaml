@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: bill
+  name: bill
+  labels:
+    app: bill
+spec:
+  selector:
+    matchLabels:
+      app: bill
+  template:
+    metadata:
+      labels:
+        app: bill
+        name: bill
+    spec:
+      containers:
+        - name: bill
+          image: shubha-intelops/grpcx/bill
+          imagePullPolicy: Always
+        
+          env:
+            - name: SERVICE_NAME
+              value: "go-app"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "localhost:4317"
+            - name: INSECURE_MODE
+              value: "true"
+        
+          ports:
+        
+          - containerPort: 8085
+            name: grpc
+        
+        
+          - containerPort: 8084
+            name: http
+        
+        
+          readinessProbe:
+            tcpSocket:
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 15
+          livenessProbe:
+            tcpSocket:
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 30
+        

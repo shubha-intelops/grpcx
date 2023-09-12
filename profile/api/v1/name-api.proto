@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package pb;
+option go_package="./api/v1;pb";
+
+service NameService {
+    rpc Ping (NameRequest) returns (NameResponse) {};
+    rpc CreateName (CreateNameRequest) returns (CreateNameResponse) {};
+    rpc GetName (GetNameRequest) returns (GetNameResponse) {};
+    rpc UpdateName (UpdateNameRequest) returns (UpdateNameResponse) {};
+    rpc DeleteName (DeleteNameRequest) returns (DeleteNameResponse) {};
+    rpc ListNames (ListNamesRequest) returns (ListNamesResponse) {};
+}
+
+message Name {
+    int64 id = 1;
+    
+    string Address = 2;
+    
+    string Name = 3;
+    
+    int32 Age = 4;
+    
+    string Email_address = 5;
+    
+}
+
+message CreateNameRequest {
+    Name name = 1;
+}
+
+message CreateNameResponse {
+    string message = 1;
+}
+
+message GetNameRequest {
+    int64 id = 1;
+}
+
+message GetNameResponse {
+    Name name = 1;
+}
+
+message UpdateNameRequest {
+    int64 id = 1;
+    Name name = 2;
+}
+
+message UpdateNameResponse {
+    string message = 1;
+}
+
+message DeleteNameRequest {
+    int64 id = 1;
+}
+
+message DeleteNameResponse {
+    string message = 1;
+}
+
+message ListNamesRequest {
+
+}
+
+message ListNamesResponse {
+    repeated Name name = 1;
+}
+
+message NameRequest {}
+
+message NameResponse {
+    string message = 1; 
+}

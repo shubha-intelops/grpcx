@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package pb;
+option go_package="./api/v1;pb";
+
+service ProfileDataService {
+    rpc Ping (ProfileDataRequest) returns (ProfileDataResponse) {};
+    rpc CreateProfileData (CreateProfileDataRequest) returns (CreateProfileDataResponse) {};
+    rpc GetProfileData (GetProfileDataRequest) returns (GetProfileDataResponse) {};
+    rpc UpdateProfileData (UpdateProfileDataRequest) returns (UpdateProfileDataResponse) {};
+    rpc DeleteProfileData (DeleteProfileDataRequest) returns (DeleteProfileDataResponse) {};
+    rpc ListProfileData (ListProfileDataRequest) returns (ListProfileDataResponse) {};
+}
+
+message ProfileData {
+    int64 id = 1;
+    
+    Data Data = 2;
+    
+}
+
+message CreateProfileDataRequest {
+    ProfileData profileData = 1;
+}
+
+message CreateProfileDataResponse {
+    string message = 1;
+}
+
+message GetProfileDataRequest {
+    int64 id = 1;
+}
+
+message GetProfileDataResponse {
+    ProfileData profileData = 1;
+}
+
+message UpdateProfileDataRequest {
+    int64 id = 1;
+    ProfileData profileData = 2;
+}
+
+message UpdateProfileDataResponse {
+    string message = 1;
+}
+
+message DeleteProfileDataRequest {
+    int64 id = 1;
+}
+
+message DeleteProfileDataResponse {
+    string message = 1;
+}
+
+message ListProfileDataRequest {
+
+}
+
+message ListProfileDataResponse {
+    repeated ProfileData profileData = 1;
+}
+
+message ProfileDataRequest {}
+
+message ProfileDataResponse {
+    string message = 1; 
+}

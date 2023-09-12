@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package pb;
+option go_package="./api/v1;pb";
+
+service DataService {
+    rpc Ping (DataRequest) returns (DataResponse) {};
+    rpc CreateData (CreateDataRequest) returns (CreateDataResponse) {};
+    rpc GetData (GetDataRequest) returns (GetDataResponse) {};
+    rpc UpdateData (UpdateDataRequest) returns (UpdateDataResponse) {};
+    rpc DeleteData (DeleteDataRequest) returns (DeleteDataResponse) {};
+    rpc ListData (ListDataRequest) returns (ListDataResponse) {};
+}
+
+message Data {
+    int64 id = 1;
+    
+    Bill Ggg = 2;
+    
+}
+
+message CreateDataRequest {
+    Data data = 1;
+}
+
+message CreateDataResponse {
+    string message = 1;
+}
+
+message GetDataRequest {
+    int64 id = 1;
+}
+
+message GetDataResponse {
+    Data data = 1;
+}
+
+message UpdateDataRequest {
+    int64 id = 1;
+    Data data = 2;
+}
+
+message UpdateDataResponse {
+    string message = 1;
+}
+
+message DeleteDataRequest {
+    int64 id = 1;
+}
+
+message DeleteDataResponse {
+    string message = 1;
+}
+
+message ListDataRequest {
+
+}
+
+message ListDataResponse {
+    repeated Data data = 1;
+}
+
+message DataRequest {}
+
+message DataResponse {
+    string message = 1; 
+}
