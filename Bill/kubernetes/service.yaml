@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: bill
+  labels:
+    app: bill
+  name: bill
+spec:
+  ports:
+  
+    - protocol: TCP
+      port: 8084
+      targetPort: 8084
+   
+   
+    - protocol: TCP
+      port: 8085
+      targetPort: 8085
+   
+  selector:
+    app: bill
+  type: ClusterIP
