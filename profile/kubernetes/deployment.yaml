@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: profile
+  name: profile
+  labels:
+    app: profile
+spec:
+  selector:
+    matchLabels:
+      app: profile
+  template:
+    metadata:
+      labels:
+        app: profile
+        name: profile
+    spec:
+      containers:
+        - name: profile
+          image: shubha-intelops/grpcx/profile
+          imagePullPolicy: Always
+        
+          ports:
+        
+          - containerPort: 8081
+            name: grpc
+        
+        
+        

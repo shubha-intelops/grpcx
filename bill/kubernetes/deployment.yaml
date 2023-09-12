@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: bill
+  name: bill
+  labels:
+    app: bill
+spec:
+  selector:
+    matchLabels:
+      app: bill
+  template:
+    metadata:
+      labels:
+        app: bill
+        name: bill
+    spec:
+      containers:
+        - name: bill
+          image: shubha-intelops/grpcx/bill
+          imagePullPolicy: Always
+        
+          ports:
+        
+          - containerPort: 8082
+            name: grpc
+        
+        
+        
